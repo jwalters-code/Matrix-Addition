@@ -26,8 +26,7 @@ Instructions for Part 1
 For part 1 you need to create both of the above classes.
 
 
-2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
-as input and prints it out with the rows and columns lined up. You must use System.out.printf.
+
 3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
 print2dArray works.
 4.	TODO The filename should be given through the command prompt and passed into main via String[] args
@@ -58,9 +57,21 @@ public class Main
 		ThreadOperation secondMatrix = new ThreadOperation();
 		ThreadOperation thirdMatrix = new ThreadOperation();
 		ThreadOperation fourthMatrix = new ThreadOperation();
+		//TODO join them?????
 		
 		
 		
+		
+		
+	}
+	
+	/*2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
+		as input and prints it out with the rows and columns lined up. You must use System.out.printf.*/
+		
+		
+	static void print2dArray(int[][] printArray) {
+		
+		System.out.printf(""); //TODO COMPLETE THIS!!!!!!!!!!!!!!!!!!!!
 	}
 
 }
