@@ -5,7 +5,7 @@ No further imports are needed.
 To earn full credit, you must also
 answer the following question:
 
-Q1: One of the goals of multi-threading
+Q1: TODO One of the goals of multi-threading
 is to minimize the resource usage, such
 as memory and processor cycles. In three
 sentences, explain how multi-threaded
