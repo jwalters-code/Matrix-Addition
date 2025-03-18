@@ -25,8 +25,7 @@ multi-threading.
 Instructions for Part 1
 For part 1 you need to create both of the above classes.
 
-1.	TODO In the main method of Main, instantiate four ThreadOperation objects, 
-start them, and join them. 
+
 2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
 as input and prints it out with the rows and columns lined up. You must use System.out.printf.
 3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
@@ -51,8 +50,14 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		
-		System.out.println();
+		/*1.	TODO In the main method of Main, instantiate four ThreadOperation objects, 
+				start them, and join them. */
+				
+		//instaniate ThreadOperation objects
+		ThreadOperation firstMatrix = new ThreadOperation();
+		ThreadOperation secondMatrix = new ThreadOperation();
+		ThreadOperation thirdMatrix = new ThreadOperation();
+		ThreadOperation fourthMatrix = new ThreadOperation();
 		
 		
 		
