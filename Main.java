@@ -26,9 +26,6 @@ Instructions for Part 1
 For part 1 you need to create both of the above classes.
 
 
-
-3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
-print2dArray works.
 4.	TODO The filename should be given through the command prompt and passed into main via String[] args
 5.	TODO Open and connect to the file using a Scanner.
 6.	TODO Read in the number of rows and columns and save these in local variables in main.
@@ -59,6 +56,14 @@ public class Main
 		ThreadOperation fourthMatrix = new ThreadOperation();
 		//TODO join them?????
 		
+		/*3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
+		print2dArray works.*/
+		int[][] testArray = {
+			{1,2,3,4},
+			{5,6,7,8}
+		};
+		
+		
 		
 		
 		
@@ -67,7 +72,6 @@ public class Main
 	
 	/*2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
 		as input and prints it out with the rows and columns lined up. You must use System.out.printf.*/
-		
 		
 	static void print2dArray(int[][] printArray) {
 		
