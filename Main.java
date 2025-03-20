@@ -26,8 +26,7 @@ Instructions for Part 1
 For part 1 you need to create both of the above classes.
 
 
-4.	TODO The filename should be given through the command prompt and passed into main via String[] args
-5.	TODO Open and connect to the file using a Scanner.
+
 6.	TODO Read in the number of rows and columns and save these in local variables in main.
 7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
 writing a method to accomplish this task and calling the method twice (once for each matrix). 
@@ -62,6 +61,29 @@ public class Main
 			{1,2,3,4},
 			{5,6,7,8}
 		};
+		
+		//4.	TODO The filename should be given through the command prompt and passed into main via String[] args
+		//5.	TODO Open and connect to the file using a Scanner.
+		
+		try {
+			
+			//read in from file
+			File MatrixData = new File(args[0]);
+			Scanner dataReader = new Scanner(MatrixData);
+			
+			//DO I NEED THIS?
+			//strip first line, headers
+			//dataReader.nextLine();
+			
+			while(dataReader.hasNext()) {
+				
+			}
+			
+		}
+		catch(IOException|ArrayIndexOutOfBoundsException e) {
+			System.out.println("Enter a valid file");
+			System.exit(1);
+		}
 		
 		
 		
