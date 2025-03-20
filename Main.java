@@ -53,7 +53,23 @@ public class Main
 		ThreadOperation secondMatrix = new ThreadOperation();
 		ThreadOperation thirdMatrix = new ThreadOperation();
 		ThreadOperation fourthMatrix = new ThreadOperation();
-		//TODO join them?????
+		
+		//start threads
+		firstMatrix.start();
+		secondMatrix.start();
+		thirdMatrix.start();
+		fourthMatrix.start();
+		
+		//join threads
+		try{
+			firstMatrix.join();
+			secondMatrix.join();
+			thirdMatrix.join();
+			fourthMatrix.join();
+		}
+		catch(InterruptedException e) {
+			System.out.println("Interrupted" + e);
+		}
 		
 		/*3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
 		print2dArray works.*/
