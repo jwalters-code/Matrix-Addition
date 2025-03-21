@@ -25,15 +25,6 @@ multi-threading.
 Instructions for Part 1
 For part 1 you need to create both of the above classes.
 
-
-
-6.	TODO Read in the number of rows and columns and save these in local variables in main.
-7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
-writing a method to accomplish this task and calling the method twice (once for each matrix). 
-Consider using this method header: 
-
-public static int[][] matrixFromFile(int rows, int columns, Scanner file_reader)
-
 NOTE: if you are using a static scanner or an object-oriented approach then you may not need to pass 
 these arguments to the method.
 */
@@ -78,42 +69,70 @@ public class Main
 			{5,6,7,8}
 		};
 		
+		print2dArray(testArray);
+		
 		//4.	TODO The filename should be given through the command prompt and passed into main via String[] args
 		//5.	TODO Open and connect to the file using a Scanner.
 		
 		try {
 			
 			//read in from file
-			File MatrixData = new File(args[0]);
-			Scanner dataReader = new Scanner(MatrixData);
+			File matrixData = new File(args[0]);
+			Scanner dataReader = new Scanner(matrixData);
 			
-			//DO I NEED THIS?
-			//strip first line, headers
-			//dataReader.nextLine();
+			//6.	TODO Read in the number of rows and columns and save these in local variables in main.
+			int rows = dataReader.nextInt();
+			int columns = dataReader.nextInt();
 			
-			while(dataReader.hasNext()) {
-				
-			}
+			//test code
+			System.out.println(rows);
+			System.out.println(columns);
 			
-		}
+			/*7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
+			writing a method to accomplish this task and calling the method twice (once for each matrix).*/
+			int[][] matrix1 = matrixFromFile(rows, columns, dataReader);
+			int[][] matrix2 = matrixFromFile(rows, columns, dataReader);
+			
+			//Test code
+			print2dArray(matrix1);
+			print2dArray(matrix2);
+			
+			//close scanner
+			dataReader.close();
+		} 
+		
 		catch(IOException|ArrayIndexOutOfBoundsException e) {
 			System.out.println("Enter a valid file");
 			System.exit(1);
 		}
-		
-		
-		
-		
-		
-		
 	}
 	
 	/*2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
 		as input and prints it out with the rows and columns lined up. You must use System.out.printf.*/
 		
 	static void print2dArray(int[][] printArray) {
-		
-		System.out.printf(""); //TODO COMPLETE THIS!!!!!!!!!!!!!!!!!!!!
+		for(int r=0; r<printArray.length; r++) {
+			for(int c=0; c<printArray[r].length; c++) {
+				System.out.printf(" %d", printArray[r][c]);
+			}
+			System.out.printf("\n"); //new line
+		}
+	}
+	
+	/*7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
+	writing a method to accomplish this task and calling the method twice (once for each matrix). 
+	Consider using this method header: 
+
+	public static int[][] matrixFromFile(int rows, int columns, Scanner file_reader)*/
+	
+	public static int[][] matrixFromFile(int rows, int columns, Scanner dataReader) {
+		int[][] tempArray = new int[rows][columns];
+		for(int r=0; r<tempArray.length; r++) {
+			for(int c=0; c<tempArray[r].length; c++) {
+				tempArray[r][c] = dataReader.nextInt();
+			}
+		}
+		return tempArray;
 	}
 
 }
