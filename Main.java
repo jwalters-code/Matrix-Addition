@@ -1,10 +1,16 @@
 /*
-This code is provided to give you a
-starting place. It should be modified.
-No further imports are needed.
-To earn full credit, you must also
-answer the following question:
+Jade Walters
+CSCI 2251
+Assignment: Multithreading
+Purpose: Pactice using multiple threads
+Sources: --I got help with using an enum in a constructor 
+from StackOverflow (I had trouble finding it on a proper 
+tutorial website).
+source: 
+https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
+*/
 
+/*
 Q1: TODO One of the goals of multi-threading
 is to minimize the resource usage, such
 as memory and processor cycles. In three
@@ -18,16 +24,6 @@ multi-threading.
 
 */
 
-/*List of classes that you will write:
-•	Main – contains the main method.
-•	TODO ThreadOperation – extends Thread and performs submatrix addition
-
-Instructions for Part 1
-For part 1 you need to create both of the above classes.
-
-NOTE: if you are using a static scanner or an object-oriented approach then you may not need to pass 
-these arguments to the method.
-*/
 import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
@@ -36,9 +32,7 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		/*1.	TODO In the main method of Main, instantiate four ThreadOperation objects, 
-				start them, and join them. */
-				
+		
 		//instaniate ThreadOperation objects
 		ThreadOperation firstMatrix = new ThreadOperation();
 		ThreadOperation secondMatrix = new ThreadOperation();
@@ -62,17 +56,12 @@ public class Main
 			System.out.println("Interrupted" + e);
 		}
 		
-		/*3.	TODO Instantiate a test 2d array with any values you like in main and use it to verify that 
-		print2dArray works.*/
+		//create test array and test print2dArray method
 		int[][] testArray = {
 			{1,2,3,4},
 			{5,6,7,8}
 		};
-		
 		print2dArray(testArray);
-		
-		//4.	TODO The filename should be given through the command prompt and passed into main via String[] args
-		//5.	TODO Open and connect to the file using a Scanner.
 		
 		try {
 			
@@ -80,22 +69,21 @@ public class Main
 			File matrixData = new File(args[0]);
 			Scanner dataReader = new Scanner(matrixData);
 			
-			//6.	TODO Read in the number of rows and columns and save these in local variables in main.
+			//create rows, columns variables, scan in values
 			int rows = dataReader.nextInt();
 			int columns = dataReader.nextInt();
 			
-			//test code
+			/*//test code
 			System.out.println(rows);
-			System.out.println(columns);
+			System.out.println(columns);*/
 			
-			/*7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
-			writing a method to accomplish this task and calling the method twice (once for each matrix).*/
+			//Read in the first and second matrices
 			int[][] matrix1 = matrixFromFile(rows, columns, dataReader);
 			int[][] matrix2 = matrixFromFile(rows, columns, dataReader);
 			
-			//Test code
+			/*//Test code
 			print2dArray(matrix1);
-			print2dArray(matrix2);
+			print2dArray(matrix2);*/
 			
 			//close scanner
 			dataReader.close();
@@ -107,9 +95,7 @@ public class Main
 		}
 	}
 	
-	/*2.	TODO In Main.java, write a static method named print2dArray that takes a two-dimensional array 
-		as input and prints it out with the rows and columns lined up. You must use System.out.printf.*/
-		
+	//method prints out formatted 2d array	
 	static void print2dArray(int[][] printArray) {
 		for(int r=0; r<printArray.length; r++) {
 			for(int c=0; c<printArray[r].length; c++) {
@@ -118,13 +104,8 @@ public class Main
 			System.out.printf("\n"); //new line
 		}
 	}
-	
-	/*7.	TODO Read in the first and second matrices (two-dimensional arrays) from the file. I recommend 
-	writing a method to accomplish this task and calling the method twice (once for each matrix). 
-	Consider using this method header: 
-
-	public static int[][] matrixFromFile(int rows, int columns, Scanner file_reader)*/
-	
+		
+	//method for scanning in 2d array from file
 	public static int[][] matrixFromFile(int rows, int columns, Scanner dataReader) {
 		int[][] tempArray = new int[rows][columns];
 		for(int r=0; r<tempArray.length; r++) {
@@ -134,5 +115,4 @@ public class Main
 		}
 		return tempArray;
 	}
-
 }

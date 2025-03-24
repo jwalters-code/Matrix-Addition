@@ -1,8 +1,8 @@
 /*
 Jade Walters
 CSCI 2251
-Assignment 4: Tic Tac Toe
-Purpose: Create a tic tac toe game using classes
+Assignment: Multithreading
+Purpose: Pactice using multiple threads
 Sources: --I got help with using an enum in a constructor 
 from StackOverflow (I had trouble finding it on a proper 
 tutorial website).
