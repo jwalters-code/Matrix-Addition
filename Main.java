@@ -11,7 +11,7 @@ https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-construct
 */
 
 /*
-Q1: TODO One of the goals of multi-threading
+Q1: One of the goals of multi-threading
 is to minimize the resource usage, such
 as memory and processor cycles. In three
 sentences, explain how multi-threaded
@@ -22,6 +22,11 @@ threads compared to processes, etcetera,
 and connect these issues to 
 multi-threading.
 
+Multi-threaded code minimizes resource usage by maximizing memory because less memory is required to run threads than 
+processors so running multiple threads on a single processor requires less memory than running single threads on multiple 
+processors.  It also maximizes efficiency when there are I/O factors, such as waiting for input from a slow, human user, 
+because it allows the processor to do other tasks during the wait time instead of bringing the entire program to a halt.  
+Finally, it maximizes memory usage because threads can easily work on the same objects and use the same address space.
 */
 
 import java.io.IOException;

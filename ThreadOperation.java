@@ -11,11 +11,8 @@ https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-construct
 */
 
 public class ThreadOperation extends Thread {
-	
-	/* TODO Each ThreadOperation will take as input (through the constructor) 
-	two matrices and a quadrant indicator. The indicator could be a String, an int, 
-	an enum or a set of indexes. It's up to you.*/
-	
+
+	//nstance variables
 	private int[][] matrix1;
 	private int[][] matrix2;
 	private Quadrant quadrant;
