@@ -24,7 +24,16 @@ There are many different (and some better) ways to get the indexes, but this is 
 make sense to the most people. 
 
 So how do you actually calculate the indexes needed? You will need four conditions (if, elseif, elseif, else) 
-for the four quadrants. Figure out the pattern based on the following examples: */
+for the four quadrants. Figure out the pattern based on the following examples: 
+
+ThreadOperation.java Organization
+I recommend formatting the ThreadOperation constructor as follows:
+<<constructor>>ThreadOperation(A : int[][], B : int[][], C : int[][], String quadrant)
+run() : void
+
+A, B, and C all refer to complete matrices (no sub-matrices) of the same size. As long as the Thread is not 
+accessing the same row and column as another Thread, there’s no problem!
+*/
 
 public class ThreadOperation extends Thread {
 

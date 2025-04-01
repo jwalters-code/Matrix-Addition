@@ -42,6 +42,21 @@ TODO After the threads complete their computation, the results need to be stored
 
 Your program should work for any size matrices.
 
+Main.java should be organized as follows (Strongly consider using the following notes as comments):
+•	Your main method opens a text file using the file name from the command line, and reads in the number of rows, 
+the number of columns, and two matrices, A and B, into two 2-dimensional array variables.
+•	Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
+including a reference to a result matrix C. Note that C should have the same dimensions as A and B.
+•	Start up all the threads and use join to make sure they finish before printing.
+•	Print out the summed matrix.
+
+UML Diagram for Matrix Addition Part 2
+
+You tell me!
+
+For part 2 you must turn in a UML diagram of your code, including the ways you modified Main and 
+ThreadOperation to complete the assignment.
+
 
 */
 
