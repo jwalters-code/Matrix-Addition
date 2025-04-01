@@ -29,6 +29,22 @@ because it allows the processor to do other tasks during the wait time instead o
 Finally, it maximizes memory usage because threads can easily work on the same objects and use the same address space.
 */
 
+/*
+Instructions for Part 2
+TODO Put it all together to read in the data from file, spawn four threads, and allocate the task of summing 
+each quadrant pair to a separate thread.
+
+TODO Consider which methods should be relocated from Main to ThreadOperation. What tools does ThreadOperation 
+need to have access to in order to do its job?
+
+TODO After the threads complete their computation, the results need to be stored in the matrix C, another 
+2-dimensional array variable in main.
+
+Your program should work for any size matrices.
+
+
+*/
+
 import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;

@@ -10,6 +10,22 @@ source:
 https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
 */
 
+/* TODO In ThreadOperation write a method named getQuadrantIndexes that determines the indexes needed to 
+iterate over one of the four quadrants. For instance, your method might take as input the row count, 
+column count, and a quadrant String, and then return 4 numbers in an array: row start, row end, column 
+start, column end. Although I’m demonstrating this method using a String to indicate the quadrant, an 
+integer would also work fine, and an enum with four values would be best.
+
+public static int[] getQuadrantIndexes(int rows, int columns, String quadrant)
+
+Called as int[] indexes = getQuadrantIndexes(rows, columns, “upper left”);
+
+There are many different (and some better) ways to get the indexes, but this is the way that I think will 
+make sense to the most people. 
+
+So how do you actually calculate the indexes needed? You will need four conditions (if, elseif, elseif, else) 
+for the four quadrants. Figure out the pattern based on the following examples: */
+
 public class ThreadOperation extends Thread {
 
 	//nstance variables
