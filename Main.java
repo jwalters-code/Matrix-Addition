@@ -98,6 +98,14 @@ public class Main
 			catch(InterruptedException e) {
 				System.out.println("Interrupted" + e);
 			}
+			
+			//print solution matrix
+			for(int r=0;r<matrixC.length; r++) {
+				for(int c=0; c<matrixC[r].length; c++) {
+					System.out.print(matrixC[r][c]);
+				}
+				System.out.println();
+			}
 		} 
 		
 		catch(IOException|ArrayIndexOutOfBoundsException e) {
