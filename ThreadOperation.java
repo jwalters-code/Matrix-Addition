@@ -8,23 +8,11 @@ from StackOverflow (I had trouble finding it on a proper
 tutorial website).
 source: 
 https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
+--I referenced a CodeSnippet video on YouTube for help with enum comparisons.
+source: https://www.youtube.com/watch?v=2rJ2i3oRA-Y
 */
 
-/* TODO In ThreadOperation write a method named getQuadrantIndexes that determines the indexes needed to 
-iterate over one of the four quadrants. For instance, your method might take as input the row count, 
-column count, and a quadrant String, and then return 4 numbers in an array: row start, row end, column 
-start, column end. Although I’m demonstrating this method using a String to indicate the quadrant, an 
-integer would also work fine, and an enum with four values would be best.
-
-public static int[] getQuadrantIndexes(int rows, int columns, String quadrant)
-
-Called as int[] indexes = getQuadrantIndexes(rows, columns, “upper left”);
-
-There are many different (and some better) ways to get the indexes, but this is the way that I think will 
-make sense to the most people. 
-
-So how do you actually calculate the indexes needed? You will need four conditions (if, elseif, elseif, else) 
-for the four quadrants. Figure out the pattern based on the following examples: 
+/* 
 
 ThreadOperation.java Organization
 I recommend formatting the ThreadOperation constructor as follows:
@@ -59,5 +47,82 @@ public class ThreadOperation extends Thread {
 		this.matrix1 = matrix1;
 		this.matrix2 = matrix2;
 		this.quadrant = quadrant;
+	}
+	
+	//run method
+	public void run() {
+		
+	}
+	
+	/*TODO In ThreadOperation write a method named getQuadrantIndexes that determines the indexes needed to 
+	iterate over one of the four quadrants. For instance, your method might take as input the row count, 
+	column count, and a quadrant String, and then return 4 numbers in an array: row start, row end, column 
+	start, column end. Although I’m demonstrating this method using a String to indicate the quadrant, an 
+	integer would also work fine, and an enum with four values would be best.
+
+	public static int[] getQuadrantIndexes(int rows, int columns, String quadrant)
+
+	Called as int[] indexes = getQuadrantIndexes(rows, columns, "upper left");
+
+	There are many different (and some better) ways to get the indexes, but this is the way that I think will 
+	make sense to the most people. 
+
+	So how do you actually calculate the indexes needed? You will need four conditions (if, elseif, elseif, else) 
+	for the four quadrants. Figure out the pattern based on the following examples: */
+	
+	//method for returning relevant quadrant indexes with adjustments for index count start from 0
+	public static int[] getQuadrantIndexes(int rows, int columns, Quadrant quadrant) {
+		
+		//calculate approximate half of both rows and columns
+		int rowsHalf = rows/2;
+		int columnsHalf = columns/2;
+		
+		//declare index variables
+		int rowStart;
+		int rowEnd;
+		int columnStart;
+		int columnEnd;
+		
+		//calculate start/end indexes for each quadrant
+		//source: https://www.youtube.com/watch?v=2rJ2i3oRA-Y
+		if(quadrant == Quadrant.ONE) {
+			
+			//upper left quadrant
+			rowStart = 0;
+			rowEnd = rowsHalf - 1;
+			columnStart = 0;
+			columnEnd = columnsHalf - 1;
+		}
+	
+		else if(quadrant == Quadrant.TWO) {
+			
+			//upper right quadrant
+			rowStart = rowsHalf;
+			rowEnd = rows - 1;
+			columnStart = 0;
+			columnEnd = columnsHalf - 1;
+		}
+		
+		else if(quadrant == Quadrant.THREE) {
+			
+			//lower left quadrant
+			rowStart = 0;
+			rowEnd = rowsHalf - 1;
+			columnStart = columnsHalf;
+			columnEnd = columns - 1;
+		}
+		
+		else {
+			
+			//lower right quadrant
+			rowStart = rowsHalf;
+			rowEnd = rows - 1;
+			columnStart = columnsHalf;
+			columnEnd = columns - 1;
+		}
+		
+		//add start and end indexes to indexArray
+		int[] indexArray = {rowStart, rowEnd, columnStart, columnEnd};
+		return indexArray;
 	}
 }

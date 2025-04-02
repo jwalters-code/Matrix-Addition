@@ -43,9 +43,9 @@ TODO After the threads complete their computation, the results need to be stored
 Your program should work for any size matrices.
 
 Main.java should be organized as follows (Strongly consider using the following notes as comments):
-•	Your main method opens a text file using the file name from the command line, and reads in the number of rows, 
+•	TODO Your main method opens a text file using the file name from the command line, and reads in the number of rows, 
 the number of columns, and two matrices, A and B, into two 2-dimensional array variables.
-•	Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
+•	TODO Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
 including a reference to a result matrix C. Note that C should have the same dimensions as A and B.
 •	Start up all the threads and use join to make sure they finish before printing.
 •	Print out the summed matrix.
@@ -68,12 +68,60 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
+	
+		/*
+		//create test array and test print2dArray method
+		int[][] testArray = {
+			{1,2,3,4},
+			{5,6,7,8}
+		};
+		print2dArray(testArray); */
+		
+		//create matrix A and B
+		int[][] matrixA;
+		int[][] matrixB;
+		
+		//open a text file using the file name from the command line, and read in the number of rows, 
+		//the number of columns, and two matrices, A and B, into two 2-dimensional array variables.
+		try {
+			
+			//read in from file
+			File matrixData = new File(args[0]);
+			Scanner dataReader = new Scanner(matrixData);
+			
+			//create rows, columns variables, scan in values
+			int rows = dataReader.nextInt();
+			int columns = dataReader.nextInt();
+			
+			/*//test code
+			System.out.println(rows);
+			System.out.println(columns);*/
+			
+			//Read in the first and second matrices
+			matrixA = matrixFromFile(rows, columns, dataReader);
+			matrixB = matrixFromFile(rows, columns, dataReader);
+			
+			/*//Test code
+			print2dArray(matrix1);
+			print2dArray(matrix2);*/
+			
+			//close scanner
+			dataReader.close();
+		} 
+		
+		catch(IOException|ArrayIndexOutOfBoundsException e) {
+			System.out.println("Enter a valid file");
+			System.exit(1);
+		}
+		
+		//Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
+		//including a reference to a result matrix C. Note that C should have the same dimensions as A and B??????????????????????.
 		
 		//instaniate ThreadOperation objects
-		ThreadOperation firstMatrix = new ThreadOperation();
-		ThreadOperation secondMatrix = new ThreadOperation();
-		ThreadOperation thirdMatrix = new ThreadOperation();
-		ThreadOperation fourthMatrix = new ThreadOperation();
+		ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.ONE);
+		ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.TWO);
+		ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.THREE);
+		ThreadOperation fourthMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.FOUR);
 		
 		//start threads
 		firstMatrix.start();
@@ -90,44 +138,6 @@ public class Main
 		}
 		catch(InterruptedException e) {
 			System.out.println("Interrupted" + e);
-		}
-		
-		//create test array and test print2dArray method
-		int[][] testArray = {
-			{1,2,3,4},
-			{5,6,7,8}
-		};
-		print2dArray(testArray);
-		
-		try {
-			
-			//read in from file
-			File matrixData = new File(args[0]);
-			Scanner dataReader = new Scanner(matrixData);
-			
-			//create rows, columns variables, scan in values
-			int rows = dataReader.nextInt();
-			int columns = dataReader.nextInt();
-			
-			/*//test code
-			System.out.println(rows);
-			System.out.println(columns);*/
-			
-			//Read in the first and second matrices
-			int[][] matrix1 = matrixFromFile(rows, columns, dataReader);
-			int[][] matrix2 = matrixFromFile(rows, columns, dataReader);
-			
-			/*//Test code
-			print2dArray(matrix1);
-			print2dArray(matrix2);*/
-			
-			//close scanner
-			dataReader.close();
-		} 
-		
-		catch(IOException|ArrayIndexOutOfBoundsException e) {
-			System.out.println("Enter a valid file");
-			System.exit(1);
 		}
 	}
 	
