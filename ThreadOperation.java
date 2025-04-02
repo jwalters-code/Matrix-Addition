@@ -3,13 +3,7 @@ Jade Walters
 CSCI 2251
 Assignment: Multithreading
 Purpose: Pactice using multiple threads
-Sources: --I got help with using an enum in a constructor 
-from StackOverflow (I had trouble finding it on a proper 
-tutorial website).
-source: 
-https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
---I referenced a CodeSnippet video on YouTube for help with enum comparisons.
-source: https://www.youtube.com/watch?v=2rJ2i3oRA-Y
+Sources: 
 */
 
 /* 
@@ -28,39 +22,28 @@ public class ThreadOperation extends Thread {
 	//nstance variables
 	private int[][] matrix1;
 	private int[][] matrix2;
+	private int[][] matrix3; //result matrix
 	private int quadrant;
 	
-	//default constructor
-	public ThreadOperation() {
-	}
-	
 	//constructor
-	public ThreadOperation(int[][] matrix1, int[][] matrix2, int quadrant) {
+	public ThreadOperation(int[][] matrix1, int[][] matrix2, int[][] matrix3, int quadrant) {
 		this.matrix1 = matrix1;
 		this.matrix2 = matrix2;
+		this.matrix3 = matrix3;
 		this.quadrant = quadrant;
 	}
 	
 	//run method
+	@Override
 	public void run() {
+		int[] startEnd = getQuadrantIndexes(matrix1.length, matrix1[0].length, quadrant);
+		for(int r=startEnd[0]; r<startEnd[1]; r++) {
+			for(int c=startEnd[2]; c<startEnd[3]; c++) {
+				matrix3[r][c] = matrix1[r][c] + matrix2[r][c];
+			}
+		}
 		
 	}
-	
-	/*TODO In ThreadOperation write a method named getQuadrantIndexes that determines the indexes needed to 
-	iterate over one of the four quadrants. For instance, your method might take as input the row count, 
-	column count, and a quadrant String, and then return 4 numbers in an array: row start, row end, column 
-	start, column end. Although I’m demonstrating this method using a String to indicate the quadrant, an 
-	integer would also work fine, and an enum with four values would be best.
-
-	public static int[] getQuadrantIndexes(int rows, int columns, String quadrant)
-
-	Called as int[] indexes = getQuadrantIndexes(rows, columns, "upper left");
-
-	There are many different (and some better) ways to get the indexes, but this is the way that I think will 
-	make sense to the most people. 
-
-	So how do you actually calculate the indexes needed? You will need four conditions (if, elseif, elseif, else) 
-	for the four quadrants. Figure out the pattern based on the following examples: */
 	
 	//method for returning relevant quadrant indexes with adjustments for index count start from 0
 	public static int[] getQuadrantIndexes(int rows, int columns, int quadrant) {
@@ -76,45 +59,55 @@ public class ThreadOperation extends Thread {
 		int columnEnd;
 		
 		//calculate start/end indexes for each quadrant
-		//source: https://www.youtube.com/watch?v=2rJ2i3oRA-Y
 		if(quadrant == 1) {
 			
 			//upper left quadrant
 			rowStart = 0;
-			rowEnd = rowsHalf - 1;
+			rowEnd = rowsHalf;
 			columnStart = 0;
-			columnEnd = columnsHalf - 1;
+			columnEnd = columnsHalf;
 		}
 	
 		else if(quadrant == 2) {
 			
 			//upper right quadrant
 			rowStart = rowsHalf;
-			rowEnd = rows - 1;
+			rowEnd = rows;
 			columnStart = 0;
-			columnEnd = columnsHalf - 1;
+			columnEnd = columnsHalf;
 		}
 		
 		else if(quadrant == 3) {
 			
 			//lower left quadrant
 			rowStart = 0;
-			rowEnd = rowsHalf - 1;
+			rowEnd = rowsHalf;
 			columnStart = columnsHalf;
-			columnEnd = columns - 1;
+			columnEnd = columns;
 		}
 		
 		else {
 			
 			//lower right quadrant
 			rowStart = rowsHalf;
-			rowEnd = rows - 1;
+			rowEnd = rows;
 			columnStart = columnsHalf;
-			columnEnd = columns - 1;
+			columnEnd = columns;
 		}
 		
 		//add start and end indexes to indexArray
 		int[] indexArray = {rowStart, rowEnd, columnStart, columnEnd};
 		return indexArray;
 	}
+	
+	/*
+	//method for adding matrixes WHERE TO PUT HOW TO GET STARTS/END OUT?
+	public void addMatrix(int rows, int columns, int quadrant) {
+		int[] startEnd = getQuadrantIndexes(int rows, int columns, int quadrant);
+		for(int r=startEnd[0]; r<startEnd[1]; r++) {
+			for(int c=startEnd[2]; c<startEnd[3]; c++) {
+				matrixC[r][c] = matrix1[r][c] + matrix2[r][c];
+			}
+		}
+	}*/
 }

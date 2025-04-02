@@ -77,14 +77,14 @@ public class Main
 			int[][] matrixC = new int[rows][columns];  //result array
 			
 			//instaniate ThreadOperation objects
-			ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, 1);
-			ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, 2);
-			ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, 3);
-			ThreadOperation fourthMatrix = new ThreadOperation(matrixA, matrixB, 4);
+			ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 1);
+			ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 2);
+			ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 3);
+			ThreadOperation fourthMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 4);
 			
 			//start threads
 			firstMatrix.start();
-			secondMatrix.start();
+			secondMatrix.start();	
 			thirdMatrix.start();
 			fourthMatrix.start();
 			
