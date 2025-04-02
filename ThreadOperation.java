@@ -99,15 +99,5 @@ public class ThreadOperation extends Thread {
 		int[] indexArray = {rowStart, rowEnd, columnStart, columnEnd};
 		return indexArray;
 	}
-	
-	/*
-	//method for adding matrixes WHERE TO PUT HOW TO GET STARTS/END OUT?
-	public void addMatrix(int rows, int columns, int quadrant) {
-		int[] startEnd = getQuadrantIndexes(int rows, int columns, int quadrant);
-		for(int r=startEnd[0]; r<startEnd[1]; r++) {
-			for(int c=startEnd[2]; c<startEnd[3]; c++) {
-				matrixC[r][c] = matrix1[r][c] + matrix2[r][c];
-			}
-		}
-	}*/
+
 }
