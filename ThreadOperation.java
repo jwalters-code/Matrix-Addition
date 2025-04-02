@@ -28,22 +28,14 @@ public class ThreadOperation extends Thread {
 	//nstance variables
 	private int[][] matrix1;
 	private int[][] matrix2;
-	private Quadrant quadrant;
-	
-	//https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
-	enum Quadrant {
-		ONE,
-		TWO,
-		THREE,
-		FOUR
-	}
+	private int quadrant;
 	
 	//default constructor
 	public ThreadOperation() {
 	}
 	
 	//constructor
-	public ThreadOperation(int[][] matrix1, int[][] matrix2, Quadrant quadrant) {
+	public ThreadOperation(int[][] matrix1, int[][] matrix2, int quadrant) {
 		this.matrix1 = matrix1;
 		this.matrix2 = matrix2;
 		this.quadrant = quadrant;
@@ -71,7 +63,7 @@ public class ThreadOperation extends Thread {
 	for the four quadrants. Figure out the pattern based on the following examples: */
 	
 	//method for returning relevant quadrant indexes with adjustments for index count start from 0
-	public static int[] getQuadrantIndexes(int rows, int columns, Quadrant quadrant) {
+	public static int[] getQuadrantIndexes(int rows, int columns, int quadrant) {
 		
 		//calculate approximate half of both rows and columns
 		int rowsHalf = rows/2;
@@ -85,7 +77,7 @@ public class ThreadOperation extends Thread {
 		
 		//calculate start/end indexes for each quadrant
 		//source: https://www.youtube.com/watch?v=2rJ2i3oRA-Y
-		if(quadrant == Quadrant.ONE) {
+		if(quadrant == 1) {
 			
 			//upper left quadrant
 			rowStart = 0;
@@ -94,7 +86,7 @@ public class ThreadOperation extends Thread {
 			columnEnd = columnsHalf - 1;
 		}
 	
-		else if(quadrant == Quadrant.TWO) {
+		else if(quadrant == 2) {
 			
 			//upper right quadrant
 			rowStart = rowsHalf;
@@ -103,7 +95,7 @@ public class ThreadOperation extends Thread {
 			columnEnd = columnsHalf - 1;
 		}
 		
-		else if(quadrant == Quadrant.THREE) {
+		else if(quadrant == 3) {
 			
 			//lower left quadrant
 			rowStart = 0;

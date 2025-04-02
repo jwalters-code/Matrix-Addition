@@ -76,11 +76,7 @@ public class Main
 			{5,6,7,8}
 		};
 		print2dArray(testArray); */
-		
-		//create matrix A and B
-		int[][] matrixA;
-		int[][] matrixB;
-		
+	
 		//open a text file using the file name from the command line, and read in the number of rows, 
 		//the number of columns, and two matrices, A and B, into two 2-dimensional array variables.
 		try {
@@ -98,46 +94,46 @@ public class Main
 			System.out.println(columns);*/
 			
 			//Read in the first and second matrices
-			matrixA = matrixFromFile(rows, columns, dataReader);
-			matrixB = matrixFromFile(rows, columns, dataReader);
+			int[][] matrixA = matrixFromFile(rows, columns, dataReader);
+			int[][] matrixB = matrixFromFile(rows, columns, dataReader);
 			
 			/*//Test code
 			print2dArray(matrix1);
 			print2dArray(matrix2);*/
-			
+		
 			//close scanner
 			dataReader.close();
+			
+			//Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
+			//including a reference to a result matrix C. Note that C should have the same dimensions as A and B??????????????????????.
+			
+			//instaniate ThreadOperation objects
+			ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, 1);
+			ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, 2);
+			ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, 3);
+			ThreadOperation fourthMatrix = new ThreadOperation(matrixA, matrixB, 4);
+			
+			//start threads
+			firstMatrix.start();
+			secondMatrix.start();
+			thirdMatrix.start();
+			fourthMatrix.start();
+			
+			//join threads
+			try{
+				firstMatrix.join();
+				secondMatrix.join();
+				thirdMatrix.join();
+				fourthMatrix.join();
+			}
+			catch(InterruptedException e) {
+				System.out.println("Interrupted" + e);
+			}
 		} 
 		
 		catch(IOException|ArrayIndexOutOfBoundsException e) {
 			System.out.println("Enter a valid file");
 			System.exit(1);
-		}
-		
-		//Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
-		//including a reference to a result matrix C. Note that C should have the same dimensions as A and B??????????????????????.
-		
-		//instaniate ThreadOperation objects
-		ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.ONE);
-		ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.TWO);
-		ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.THREE);
-		ThreadOperation fourthMatrix = new ThreadOperation(matrixA, matrixB, Quadrant.FOUR);
-		
-		//start threads
-		firstMatrix.start();
-		secondMatrix.start();
-		thirdMatrix.start();
-		fourthMatrix.start();
-		
-		//join threads
-		try{
-			firstMatrix.join();
-			secondMatrix.join();
-			thirdMatrix.join();
-			fourthMatrix.join();
-		}
-		catch(InterruptedException e) {
-			System.out.println("Interrupted" + e);
 		}
 	}
 	
