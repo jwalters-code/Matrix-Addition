@@ -3,7 +3,9 @@ Jade Walters
 CSCI 2251
 Assignment: Multithreading
 Purpose: Pactice using multiple threads
-Sources: none outside of class materials
+Sources: --help with UML diagrams
+source: https://java-programming.mooc.fi/part-11/1-class-diagrams
+source: https://pages.cs.wisc.edu/~hasti/cs302/examples/UMLdiagram.html
 */
 
 public class ThreadOperation extends Thread {

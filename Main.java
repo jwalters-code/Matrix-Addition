@@ -3,7 +3,9 @@ Jade Walters
 CSCI 2251
 Assignment: Multithreading
 Purpose: Pactice using multiple threads
-Sources: none outside of class materials
+Sources: --help with UML diagrams
+source: https://java-programming.mooc.fi/part-11/1-class-diagrams
+source: https://pages.cs.wisc.edu/~hasti/cs302/examples/UMLdiagram.html
 */
 
 import java.io.IOException;
@@ -30,13 +32,13 @@ public class Main
 			//Read in the first and second matrices
 			int[][] matrixA = matrixFromFile(rows, columns, dataReader);
 			int[][] matrixB = matrixFromFile(rows, columns, dataReader);
+			int[][] matrixC = new int[rows][columns];  //result array, empty
 			
 			//close scanner
 			dataReader.close();
 			
 			//Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
 			//including a reference to a result matrix C. Note that C should have the same dimensions as A and B
-			int[][] matrixC = new int[rows][columns];  //result array
 			
 			//instaniate ThreadOperation objects, pass info for addition
 			ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 1);
@@ -72,7 +74,7 @@ public class Main
 	}
 	
 	//method prints out formatted 2d array	
-	static void print2dArray(int[][] printArray) {
+	public static void print2dArray(int[][] printArray) {
 		for(int r=0; r<printArray.length; r++) {
 			for(int c=0; c<printArray[r].length; c++) {
 				System.out.printf(" %d", printArray[r][c]);
