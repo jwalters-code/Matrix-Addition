@@ -3,44 +3,7 @@ Jade Walters
 CSCI 2251
 Assignment: Multithreading
 Purpose: Pactice using multiple threads
-Sources: --I got help with using an enum in a constructor 
-from StackOverflow (I had trouble finding it on a proper 
-tutorial website).
-source: 
-https://stackoverflow.com/questions/32733084/pass-a-simple-enum-into-a-constructor-in-java
-*/
-
-
-
-/*
-Instructions for Part 2
-TODO Put it all together to read in the data from file, spawn four threads, and allocate the task of summing 
-each quadrant pair to a separate thread.
-
-TODO Consider which methods should be relocated from Main to ThreadOperation. What tools does ThreadOperation 
-need to have access to in order to do its job?
-
-TODO After the threads complete their computation, the results need to be stored in the matrix C, another 
-2-dimensional array variable in main.
-
-Your program should work for any size matrices.
-
-Main.java should be organized as follows (Strongly consider using the following notes as comments):
-•	TODO Your main method opens a text file using the file name from the command line, and reads in the number of rows, 
-the number of columns, and two matrices, A and B, into two 2-dimensional array variables.
-•	TODO Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
-including a reference to a result matrix C. Note that C should have the same dimensions as A and B.
-•	Start up all the threads and use join to make sure they finish before printing.
-•	Print out the summed matrix.
-
-UML Diagram for Matrix Addition Part 2
-
-You tell me!
-
-TODO For part 2 you must turn in a UML diagram of your code, including the ways you modified Main and 
-ThreadOperation to complete the assignment.
-
-
+Sources: none outside of class materials
 */
 
 import java.io.IOException;
@@ -73,10 +36,9 @@ public class Main
 			
 			//Instantiate four ThreadOperation objects and pass them the information they need to sum up paired quadrants, 
 			//including a reference to a result matrix C. Note that C should have the same dimensions as A and B
-			
 			int[][] matrixC = new int[rows][columns];  //result array
 			
-			//instaniate ThreadOperation objects
+			//instaniate ThreadOperation objects, pass info for addition
 			ThreadOperation firstMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 1);
 			ThreadOperation secondMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 2);
 			ThreadOperation thirdMatrix = new ThreadOperation(matrixA, matrixB, matrixC, 3);

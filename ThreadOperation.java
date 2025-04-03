@@ -3,23 +3,12 @@ Jade Walters
 CSCI 2251
 Assignment: Multithreading
 Purpose: Pactice using multiple threads
-Sources: 
-*/
-
-/* 
-
-ThreadOperation.java Organization
-I recommend formatting the ThreadOperation constructor as follows:
-<<constructor>>ThreadOperation(A : int[][], B : int[][], C : int[][], String quadrant)
-run() : void
-
-A, B, and C all refer to complete matrices (no sub-matrices) of the same size. As long as the Thread is not 
-accessing the same row and column as another Thread, there’s no problem!
+Sources: none outside of class materials
 */
 
 public class ThreadOperation extends Thread {
 
-	//nstance variables
+	//instance variables
 	private int[][] matrix1;
 	private int[][] matrix2;
 	private int[][] matrix3; //result matrix
@@ -33,7 +22,7 @@ public class ThreadOperation extends Thread {
 		this.quadrant = quadrant;
 	}
 	
-	//run method
+	//run method, conducts matrix addition
 	@Override
 	public void run() {
 		int[] startEnd = getQuadrantIndexes(matrix1.length, matrix1[0].length, quadrant);
@@ -42,10 +31,9 @@ public class ThreadOperation extends Thread {
 				matrix3[r][c] = matrix1[r][c] + matrix2[r][c];
 			}
 		}
-		
 	}
 	
-	//method for returning relevant quadrant indexes with adjustments for index count start from 0
+	//method for returning relevant quadrant indexes
 	public static int[] getQuadrantIndexes(int rows, int columns, int quadrant) {
 		
 		//calculate approximate half of both rows and columns
@@ -99,5 +87,4 @@ public class ThreadOperation extends Thread {
 		int[] indexArray = {rowStart, rowEnd, columnStart, columnEnd};
 		return indexArray;
 	}
-
 }
