@@ -100,12 +100,7 @@ public class Main
 			}
 			
 			//print solution matrix
-			for(int r=0;r<matrixC.length; r++) {
-				for(int c=0; c<matrixC[r].length; c++) {
-					System.out.print(matrixC[r][c]);
-				}
-				System.out.println();
-			}
+			print2dArray(matrixC);
 		} 
 		
 		catch(IOException|ArrayIndexOutOfBoundsException e) {
